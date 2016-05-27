@@ -6,37 +6,37 @@
 
 # Describes all the garage doors being monitored
 GARAGE_DOORS = [
-#    {
-#        'pin': 16,
-#        'name': "Garage Door 1",
-#        'alerts': [
-#            {
-#                'state': 'open',
-#                'time': 120,
-#                'recipients': [ 'sms:+11112223333', 'sms:+14445556666' ]
-#            },
-#            {
-#                'state': 'open',
-#                'time': 600,
-#                'recipients': [ 'sms:+11112223333', 'sms:+14445556666' ]
-#            }
-#        ]
-#    },
+    {
+        'pin': 16,
+        'name': "Small Garage Door",
+        'alerts': [
+            {
+                'state': 'open',
+                'time': 120,
+                'recipients': [ 'sms:+16512700143', 'sms:+6514970027']
+            },
+            {
+                'state': 'open',
+                'time': 600,
+                'recipients': [ 'sms:+16512700143', 'sms:+6514970027']
+            }
+        ]
+    },
 
     {
         'pin': 15,
-        'name': "Example Garage Door",
+        'name': "Main Garage Door",
         'alerts': [
-#            {
-#                'state': 'open',
-#                'time': 120,
-#                'recipients': [ 'sms:+11112223333', 'email:someone@example.com', 'twitter_dm:twitter_user', 'pushbullet:access_token', 'gcm', 'tweet' ]
-#            },
-#            {
-#                'state': 'open',
-#                'time': 600,
-#                'recipients': [ 'sms:+11112223333', 'email:someone@example.com', 'twitter_dm:twitter_user', 'pushbullet:access_token', 'gcm', 'tweet' ]
-#            }
+            {
+                'state': 'open',
+                'time': 120,
+                'recipients': [ 'sms:+16512700143', 'sms:+6514970027']
+            },
+            {
+                'state': 'open',
+                'time': 600,
+                'recipients': [ 'sms:+16512700143', 'sms:+6514970027']
+            }
         ]
     }
 ]
