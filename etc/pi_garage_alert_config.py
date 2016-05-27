@@ -73,11 +73,11 @@ TWITTER_ACCESS_SECRET = ''
 # Sign up for a Twilio account at https://www.twilio.com/
 # then these will be listed at the top of your Twilio dashboard
 
-TWILIO_ACCOUNT = ''
-TWILIO_TOKEN = ''
+TWILIO_ACCOUNT = 'AC4f4d140a4bbd4952c254502989aeab5a'
+TWILIO_TOKEN = '9ff609d40eaee5378dd6cdb6f732729f'
 
 # SMS will be sent from this phone number
-TWILIO_PHONE_NUMBER = '+11234567890'
+TWILIO_PHONE_NUMBER = '+17639511653'
 
 ##############################################################################
 # Jabber settings
