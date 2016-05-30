@@ -56,9 +56,59 @@ import sleekxmpp
 from sleekxmpp.xmlstream import resolver, cert
 from twilio.rest import TwilioRestClient
 from twilio.rest.exceptions import TwilioRestException
+from pubnub import Pubnub
 
 sys.path.append('/usr/local/etc')
 import pi_garage_alert_config as cfg
+
+##############################################################################
+# PiBusHub Support
+##############################################################################
+class PiBusHub(object):
+  def __init__(self):
+    self.logger = logging.getLogger(__name__)
+    if not hasattr(cfg, 'PUBNUB_CHANNEL_KEY'):
+      self.logger.debug("PubNub[ChannelKey] not defined - PubNub support disabled")
+    if not hasattr(cfg, 'PUBNUB_PUBLISH_KEY'):
+      self.logger.debug("PubNub[PublishKey] not defined - PubNub support disabled")
+      return
+    if cfg.PUBNUB_PUBLISH_KEY == '':
+      self.logger.debug("PubNub[PublishKey] not configured - PubNub support disabled")
+      return
+
+    if not hasattr(cfg, 'PUBNUB_SUBSCRIBE_KEY'):
+      self.logger.debug("PubNub[SubscribeKey] not defined - PubNub support disabled")
+      return
+
+    self.pubnub = Pubnub(publish_key=cfg.PUBNUB_PUBLISH_KEY, subscribe_key=cfg.PUBNUB_SUBSCRIBE_KEY)
+    
+    
+    if cfg.PUBNUB_SUBSCRIBE_KEY != '':
+      self.pubnub.subscribe(channels=cfg.PUBNUB_CHANNEL_KEY, callback=self.callback, error=self.error, connect=self.connect, reconnect=self.reconnect, disconnect=self.disconnect)
+
+
+  def callback(message, channel):
+    print(message)
+  
+  
+  def error(message):
+    print("ERROR : " + str(message))
+  
+  
+  def connect(message):
+    print("CONNECTED")
+    print self.pubnub.publish(channel='my_channel', message='Hello from the PubNub Python SDK')
+  
+  
+  
+  def reconnect(message):
+    print("RECONNECTED")
+  
+  
+  def disconnect(message):
+    print("DISCONNECTED")
+  
+  
 
 ##############################################################################
 # Jabber support
@@ -567,7 +617,7 @@ class PiGarageAlert(object):
         try:
             # Set up logging
             log_fmt = '%(asctime)-15s %(levelname)-8s %(message)s'
-            log_level = logging.INFO
+            log_level = logging.DEBUG
 
             if sys.stdout.isatty():
                 # Connected to a real terminal - log to stdout
@@ -600,6 +650,7 @@ class PiGarageAlert(object):
 
             # Create alert sending objects
             alert_senders = {
+                "PiBusHub": PiBusHub(),
                 "Jabber": Jabber(door_states, time_of_last_state_change),
                 "Twitter": Twitter(),
                 "Twilio": Twilio(),

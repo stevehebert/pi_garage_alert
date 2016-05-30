@@ -6,8 +6,13 @@ fi
 
 apt-get install python-setuptools python-dev libffi-dev
 easy_install pip
+pip install pubnub
 pip install tweepy
 pip install twilio
 pip install sleekxmpp dnspython pyasn1 pyasn1_modules
 pip install requests
 pip install requests[security]
+
+git config --global user.email "steve.hebert@gmail.com"
+git config --global user.name "Steve Hebert"
+
