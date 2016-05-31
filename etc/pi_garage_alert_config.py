@@ -13,12 +13,12 @@ GARAGE_DOORS = [
             {
                 'state': 'open',
                 'time': 120,
-                'recipients': [ 'sms:+16512700143', 'sms:+6514970027']
+                'recipients': [ 'sms:+16512700143', 'sms:+6514970027', 'PiBusHub']
             },
             {
                 'state': 'open',
                 'time': 600,
-                'recipients': [ 'sms:+16512700143', 'sms:+6514970027']
+                'recipients': [ 'sms:+16512700143', 'sms:+6514970027', 'PiBusHub']
             }
         ]
     },
@@ -30,12 +30,12 @@ GARAGE_DOORS = [
             {
                 'state': 'open',
                 'time': 120,
-                'recipients': [ 'sms:+16512700143', 'sms:+6514970027']
+                'recipients': [ 'sms:+16512700143', 'sms:+6514970027', 'PiBusHub']
             },
             {
                 'state': 'open',
                 'time': 600,
-                'recipients': [ 'sms:+16512700143', 'sms:+6514970027']
+                'recipients': [ 'sms:+16512700143', 'sms:+6514970027', 'PiBusHub']
             }
         ]
     }
@@ -53,28 +53,6 @@ PUBNUB_SUBSCRIBE_KEY = 'sub-c-29c58bda-2651-11e6-9a17-0619f8945a4f'
 PUBNUB_CHANNEL_KEY = 'Mongo'
 
 ##############################################################################
-# Email settings
-##############################################################################
-
-SMTP_SERVER = 'localhost'
-SMTP_PORT = 25
-SMTP_USER = ''
-SMTP_PASS = ''
-EMAIL_FROM = 'Garage Door <user@example.com>'
-
-##############################################################################
-# Twitter settings
-##############################################################################
-
-# Follow the instructions on http://talkfast.org/2010/05/31/twitter-from-the-command-line-in-python-using-oauth/
-# to obtain the necessary keys
-
-TWITTER_CONSUMER_KEY = ''
-TWITTER_CONSUMER_SECRET = ''
-TWITTER_ACCESS_KEY = ''
-TWITTER_ACCESS_SECRET = ''
-
-##############################################################################
 # Twilio settings
 ##############################################################################
 
@@ -86,29 +64,3 @@ TWILIO_TOKEN = '9ff609d40eaee5378dd6cdb6f732729f'
 
 # SMS will be sent from this phone number
 TWILIO_PHONE_NUMBER = '+17639511653'
-
-##############################################################################
-# Jabber settings
-##############################################################################
-
-# Jabber ID and password that status updates will be sent from
-# Leave this blank to disable Jabber support
-
-JABBER_ID = ''
-JABBER_PASSWORD = ''
-
-# Uncomment to override the default server specified in DNS SRV records
-
-#JABBER_SERVER = 'talk.google.com'
-#JABBER_PORT = 5222
-
-# List of Jabber IDs allowed to perform queries
-
-JABBER_AUTHORIZED_IDS = []
-
-##############################################################################
-# Google Cloud Messaging settings
-##############################################################################
-
-GCM_KEY = ''
-GCM_TOPIC = ''
